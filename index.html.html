@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Teddy Day 🧸🐼</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CARD */
+.card {
+  width: 90%;
+  max-width: 440px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(15px);
+  border-radius: 22px;
+  padding: 30px 22px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* TITLE */
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(2.2rem, 5vw, 2.6rem);
+  color: #fff;
+}
+
+/* CHARACTERS */
+.characters {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
+  position: relative;
+}
+
+.character {
+  font-size: clamp(3.8rem, 8vw, 4.5rem);
+  position: relative;
+  animation: bounce 3s ease-in-out infinite;
+}
+
+.character.panda { animation-delay: 1.4s; }
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* BLUSH */
+.blush {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  animation: blushFade 2s ease forwards;
+}
+
+@keyframes blushFade {
+  0% { opacity: 0; }
+  30% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* TULIPS */
+.tulip {
+  position: absolute;
+  top: 60%;
+  font-size: 1.6rem;
+  animation: tulipDance 2.5s ease-in-out infinite;
+}
+
+.tulip.left { left: -10px; }
+.tulip.right { right: -10px; animation-delay: 1.2s; }
+
+@keyframes tulipDance {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(15deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* TEXT */
+p {
+  color: white;
+  font-size: 0.95rem;
+  margin: 10px 0 18px;
+  line-height: 1.5;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 40px;
+  background: #ff6f91;
+  color: white;
+  cursor: pointer;
+  animation: heartbeat 1.4s infinite;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+
+button:hover {
+  background: #ff4f7b;
+}
+
+button:active {
+  transform: scale(0.93);
+  box-shadow: 0 0 25px rgba(255,255,255,0.8);
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.07); }
+  100% { transform: scale(1); }
+}
+
+/* POPUPS */
+.popup {
+  position: absolute;
+  font-size: 3rem;
+  animation: popFloat 2.6s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes popFloat {
+  0% { transform: scale(0); opacity: 0; }
+  30% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0) translateY(-120px); opacity: 0; }
+}
+
+/* HEARTS */
+.heart {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: floatHeart 2.5s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes floatHeart {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.1) translateY(-40px); opacity: 1; }
+  100% { transform: scale(0) translateY(-90px); opacity: 0; }
+}
+
+/* SMALL SCREENS */
+@media (max-width: 360px) {
+  .characters { gap: 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Happy Teddy Day</h1>
+
+  <div class="characters">
+    <span class="tulip left">🌷</span>
+
+    <div class="character teddy" id="teddy">🧸</div>
+    <div class="character panda" id="panda">🐼</div>
+
+    <span class="tulip right">🌷</span>
+  </div>
+
+  <p>
+    Happy Teddy Day madam ji 💕<br>
+    (Thoda ragebait karta rahunga kabhi kabar, pls adjust kar lena 😄)
+  </p>
+
+  <button id="hugBtn">🤗 Send a Hug</button>
+</div>
+
+<script>
+const hugBtn = document.getElementById("hugBtn");
+const teddy = document.getElementById("teddy");
+const panda = document.getElementById("panda");
+
+/* PANDA YAWN & SLEEP (works on all devices) */
+setInterval(() => {
+  panda.textContent = "🐼😪";
+  setTimeout(() => panda.textContent = "🐼💤", 1500);
+  setTimeout(() => panda.textContent = "🐼", 4000);
+}, 10000);
+
+hugBtn.addEventListener("click", () => {
+
+  /* SAFE PHONE VIBRATION */
+  if ("vibrate" in navigator) {
+    navigator.vibrate([60, 40, 60]);
+  }
+
+  /* TEDDY BLUSH */
+  const blush = document.createElement("div");
+  blush.className = "blush";
+  blush.textContent = "😊💗";
+  teddy.appendChild(blush);
+  setTimeout(() => blush.remove(), 2000);
+
+  const btnRect = hugBtn.getBoundingClientRect();
+
+  /* HEART BURST FROM BUTTON */
+  for (let i = 0; i < 6; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.textContent = "💖";
+    heart.style.left = btnRect.left + btnRect.width / 2 + (Math.random()*40 - 20) + "px";
+    heart.style.top = btnRect.top + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 2500);
+  }
+
+  /* POPUP CHARACTERS */
+  for (let i = 0; i < 2; i++) {
+    ["🧸","🐼"].forEach(char => {
+      const pop = document.createElement("div");
+      pop.className = "popup";
+      pop.textContent = char;
+      pop.style.left = Math.random() * 85 + "vw";
+      pop.style.top = Math.random() * 60 + "vh";
+      document.body.appendChild(pop);
+      setTimeout(() => pop.remove(), 2600);
+    });
+  }
+});
+</script>
+
+</body>
+</html>
