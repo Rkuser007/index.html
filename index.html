@@ -50,19 +50,19 @@ h1 {
 .characters {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 25px;
   margin: 20px 0;
   position: relative;
 }
 
-/* TEDDY & PANDA */
+/* TEDDY & BABY PANDA */
 .character {
-  font-size: 4.5rem;
+  font-size: 4.2rem;
   animation: bounce 3s ease-in-out infinite;
 }
 
 .character.panda {
-  animation-delay: 1.2s;
+  animation-delay: 1.4s;
 }
 
 @keyframes bounce {
@@ -92,6 +92,7 @@ p {
   color: white;
   font-size: 1rem;
   margin: 10px 0 20px;
+  line-height: 1.5;
 }
 
 /* BUTTON */
@@ -116,7 +117,7 @@ button {
 /* POPUP CHARACTERS */
 .popup {
   position: absolute;
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   animation: popFloat 2.8s ease forwards;
 }
 
@@ -151,12 +152,12 @@ button {
     <span class="tulip left">🌷</span>
 
     <div class="character teddy">🧸</div>
-    <div class="character panda">🐼</div>
+    <div class="character panda">🐼🍼</div>
 
     <span class="tulip right">🌷</span>
   </div>
 
-  <p>Teddy & Panda sending you unlimited hugs 💖</p>
+  <p>Wese to ye teddy ki wagre jaroorat nai h coz ap hi cute ho ine kair rage bait to krunga kabhi kabar so huh 💕</p>
 
   <button id="hugBtn">🤗 Send a Hug</button>
 </div>
@@ -166,7 +167,7 @@ const hugBtn = document.getElementById("hugBtn");
 
 hugBtn.addEventListener("click", () => {
 
-  // POPUP TEDDY + PANDA
+  // POPUP TEDDY + BABY PANDA
   for (let i = 0; i < 2; i++) {
     const teddy = document.createElement("div");
     teddy.className = "popup";
@@ -176,28 +177,4 @@ hugBtn.addEventListener("click", () => {
     document.body.appendChild(teddy);
     setTimeout(() => teddy.remove(), 2800);
 
-    const panda = document.createElement("div");
-    panda.className = "popup";
-    panda.innerText = "🐼";
-    panda.style.left = Math.random() * 85 + "vw";
-    panda.style.top = Math.random() * 60 + "vh";
-    document.body.appendChild(panda);
-    setTimeout(() => panda.remove(), 2800);
-  }
-
-  // HEARTS
-  for (let i = 0; i < 4; i++) {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerText = "💗";
-    heart.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 3000);
-  }
-
-});
-</script>
-
-</body>
-</html>
-
+    const p
