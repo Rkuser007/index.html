@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Teddy Day 🧸🐼</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CARD */
+.card {
+  width: 90%;
+  max-width: 420px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(15px);
+  border-radius: 22px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* TITLE */
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+/* CHARACTER ROW */
+.characters {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
+  position: relative;
+}
+
+/* TEDDY & PANDA */
+.character {
+  font-size: 4.5rem;
+  animation: bounce 3s ease-in-out infinite;
+}
+
+.character.panda {
+  animation-delay: 1.2s;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* TULIPS */
+.tulip {
+  position: absolute;
+  top: 60%;
+  font-size: 1.8rem;
+  animation: tulipDance 2.5s ease-in-out infinite;
+}
+
+.tulip.left { left: -15px; }
+.tulip.right { right: -15px; animation-delay: 1.2s; }
+
+@keyframes tulipDance {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(15deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* TEXT */
+p {
+  color: white;
+  font-size: 1rem;
+  margin: 10px 0 20px;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 40px;
+  background: #ff6f91;
+  color: white;
+  cursor: pointer;
+  animation: heartbeat 1.4s infinite;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* POPUP CHARACTERS */
+.popup {
+  position: absolute;
+  font-size: 3.5rem;
+  animation: popFloat 2.8s ease forwards;
+}
+
+@keyframes popFloat {
+  0% { transform: scale(0); opacity: 0; }
+  30% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0) translateY(-120px); opacity: 0; }
+}
+
+/* HEARTS */
+.heart {
+  position: absolute;
+  bottom: 0;
+  font-size: 1.8rem;
+  animation: floatHeart 3s ease forwards;
+}
+
+@keyframes floatHeart {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.1) translateY(-45vh); opacity: 1; }
+  100% { transform: scale(0) translateY(-70vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Happy Teddy Day</h1>
+
+  <div class="characters">
+    <span class="tulip left">🌷</span>
+
+    <div class="character teddy">🧸</div>
+    <div class="character panda">🐼</div>
+
+    <span class="tulip right">🌷</span>
+  </div>
+
+  <p>Teddy & Panda sending you unlimited hugs 💖</p>
+
+  <button id="hugBtn">🤗 Send a Hug</button>
+</div>
+
+<script>
+const hugBtn = document.getElementById("hugBtn");
+
+hugBtn.addEventListener("click", () => {
+
+  // POPUP TEDDY + PANDA
+  for (let i = 0; i < 2; i++) {
+    const teddy = document.createElement("div");
+    teddy.className = "popup";
+    teddy.innerText = "🧸";
+    teddy.style.left = Math.random() * 85 + "vw";
+    teddy.style.top = Math.random() * 60 + "vh";
+    document.body.appendChild(teddy);
+    setTimeout(() => teddy.remove(), 2800);
+
+    const panda = document.createElement("div");
+    panda.className = "popup";
+    panda.innerText = "🐼";
+    panda.style.left = Math.random() * 85 + "vw";
+    panda.style.top = Math.random() * 60 + "vh";
+    document.body.appendChild(panda);
+    setTimeout(() => panda.remove(), 2800);
+  }
+
+  // HEARTS
+  for (let i = 0; i < 4; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 3000);
+  }
+
+});
+</script>
+
+</body>
+</html>
